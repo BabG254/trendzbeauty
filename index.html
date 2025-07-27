@@ -72,6 +72,12 @@
         
         /* Mobile-specific styles */
         @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                max-width: 100% !important;
+            }
+            
             .hero-text h1 {
                 font-size: 2.5rem !important;
                 line-height: 1.2;
@@ -114,9 +120,31 @@
             .team-card {
                 margin-bottom: 2rem;
             }
+            
+            /* Navigation fixes */
+            nav .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Prevent horizontal scroll */
+            body {
+                overflow-x: hidden;
+            }
+            
+            /* Hero section mobile adjustments */
+            .hero-gradient {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
         }
         
         @media (max-width: 480px) {
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            
             .hero-text h1 {
                 font-size: 2rem !important;
             }
@@ -129,9 +157,14 @@
                 padding: 1.5rem !important;
             }
             
-            .container {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
+            /* Extra small screens */
+            nav .container {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            .text-xl, .lg\\:text-2xl {
+                font-size: 1.25rem !important;
             }
         }
         
@@ -292,68 +325,68 @@
 
     <!-- Navigation -->
     <nav class="fixed top-10 left-0 w-full z-40 bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-sm">
-        <div class="container mx-auto px-4 lg:px-6 py-4">
+        <div class="container mx-auto px-3 sm:px-4 lg:px-6 py-3 lg:py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <a href="#" class="text-xl lg:text-2xl font-bold text-pink-500 flex items-center">
-                        <i class="fas fa-spa mr-2"></i>
-                        <span>TRENDZ</span>
-                        <span class="font-light hidden sm:inline">BEAUTY PARLOUR</span>
+                <div class="flex items-center flex-shrink-0">
+                    <a href="#" class="text-lg sm:text-xl lg:text-2xl font-bold text-pink-500 flex items-center">
+                        <i class="fas fa-spa mr-1 sm:mr-2"></i>
+                        <span>TRENDZBEAUTY</span>
+                        <span class="font-light ml-1">PARLOUR</span>
                     </a>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300 active-nav">Home</a>
-                    <a href="#services" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300">Services</a>
-                    <a href="gallery.html" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300">Gallery</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300">About</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300">Contact</a>
-                    <a href="#booking" class="bg-pink-500 text-white px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 shadow-lg text-sm lg:text-base">Book Now</a>
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300 active-nav text-sm lg:text-base">Home</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300 text-sm lg:text-base">Services</a>
+                    <a href="gallery.html" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300 text-sm lg:text-base">Gallery</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300 text-sm lg:text-base">About</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300 text-sm lg:text-base">Contact</a>
+                    <a href="#booking" class="bg-pink-500 text-white px-3 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 shadow-lg text-xs lg:text-base">Book Now</a>
                 </div>
                 
-                <div class="md:hidden">
-                    <button class="text-gray-700 focus:outline-none" id="mobile-menu-button">
-                        <i class="fas fa-bars text-2xl"></i>
+                <div class="md:hidden flex-shrink-0">
+                    <button class="text-gray-700 focus:outline-none p-2" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
             
             <!-- Mobile Menu -->
-            <div class="md:hidden hidden mt-4" id="mobile-menu">
-                <div class="flex flex-col space-y-4">
-                    <a href="#home" class="text-gray-700 hover:text-pink-500 transition duration-300">Home</a>
-                    <a href="#services" class="text-gray-700 hover:text-pink-500 transition duration-300">Services</a>
-                    <a href="gallery.html" class="text-gray-700 hover:text-pink-500 transition duration-300">Gallery</a>
-                    <a href="#about" class="text-gray-700 hover:text-pink-500 transition duration-300">About</a>
-                    <a href="#contact" class="text-gray-700 hover:text-pink-500 transition duration-300">Contact</a>
-                    <a href="#booking" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-center">Book Now</a>
+            <div class="md:hidden hidden mt-4 pb-4" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="text-gray-700 hover:text-pink-500 transition duration-300 py-2 border-b border-gray-100">Home</a>
+                    <a href="#services" class="text-gray-700 hover:text-pink-500 transition duration-300 py-2 border-b border-gray-100">Services</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-pink-500 transition duration-300 py-2 border-b border-gray-100">Gallery</a>
+                    <a href="#about" class="text-gray-700 hover:text-pink-500 transition duration-300 py-2 border-b border-gray-100">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-pink-500 transition duration-300 py-2 border-b border-gray-100">Contact</a>
+                    <a href="#booking" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition duration-300 text-center mt-4">Book Now</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-40 pb-20 md:pt-48 md:pb-32 hero-gradient">
-        <div class="container mx-auto px-4 lg:px-6">
+    <section id="home" class="relative pt-32 sm:pt-40 pb-16 sm:pb-20 md:pt-48 md:pb-32 hero-gradient overflow-hidden">
+        <div class="container mx-auto px-3 sm:px-4 lg:px-6">
             <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">Experience Luxury Beauty Care</h1>
-                    <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-8">At TRENDZ Beauty Parlour, we transform your beauty dreams into reality with our premium services and expert care.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#booking" class="bg-pink-500 text-white px-6 sm:px-8 py-3 rounded-full hover:bg-pink-600 transition duration-300 shadow-lg text-center font-medium">Book Appointment</a>
-                        <a href="#services" class="border-2 border-pink-500 text-pink-500 px-6 sm:px-8 py-3 rounded-full hover:bg-pink-50 transition duration-300 shadow-lg text-center font-medium">Our Services</a>
+                <div class="w-full lg:w-1/2 mb-8 lg:mb-0" data-aos="fade-right">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">Experience Luxury Beauty Care</h1>
+                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8">At TRENDZ Beauty Parlour, we transform your beauty dreams into reality with our premium services and expert care.</p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#booking" class="bg-pink-500 text-white px-6 sm:px-8 py-3 rounded-full hover:bg-pink-600 transition duration-300 shadow-lg text-center font-medium text-sm sm:text-base">Book Appointment</a>
+                        <a href="#services" class="border-2 border-pink-500 text-pink-500 px-6 sm:px-8 py-3 rounded-full hover:bg-pink-50 transition duration-300 shadow-lg text-center font-medium text-sm sm:text-base">Our Services</a>
                     </div>
                 </div>
-                <div class="lg:w-1/2" data-aos="fade-left">
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Beauty Salon" class="rounded-2xl shadow-2xl w-full h-auto">
-                        <div class="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-white p-3 lg:p-4 rounded-xl shadow-lg hidden sm:block">
+                        <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 bg-white p-2 sm:p-3 lg:p-4 rounded-xl shadow-lg hidden sm:block">
                             <div class="flex items-center">
-                                <div class="bg-pink-100 p-2 lg:p-3 rounded-full mr-3 lg:mr-4">
-                                    <i class="fas fa-award text-pink-500 text-lg lg:text-xl"></i>
+                                <div class="bg-pink-100 p-2 lg:p-3 rounded-full mr-2 sm:mr-3 lg:mr-4">
+                                    <i class="fas fa-award text-pink-500 text-sm sm:text-lg lg:text-xl"></i>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-gray-800 text-sm lg:text-base">Award Winning</p>
+                                    <p class="font-bold text-gray-800 text-xs sm:text-sm lg:text-base">Award Winning</p>
                                     <p class="text-xs lg:text-sm text-gray-600">Beauty Salon 2023</p>
                                 </div>
                             </div>
@@ -365,108 +398,108 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 lg:py-20 bg-white">
-        <div class="container mx-auto px-4 lg:px-6">
-            <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
+    <section id="services" class="py-12 sm:py-16 lg:py-20 bg-white">
+        <div class="container mx-auto px-3 sm:px-4 lg:px-6">
+            <div class="text-center mb-8 sm:mb-12 lg:mb-16" data-aos="fade-up">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Premium Services</h2>
                 <div class="w-20 h-1 bg-pink-500 mx-auto mb-6"></div>
-                <p class="text-base lg:text-lg text-gray-600 max-w-2xl mx-auto">Indulge in our luxurious beauty treatments designed to enhance your natural beauty and boost your confidence.</p>
+                <p class="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto px-4">Indulge in our luxurious beauty treatments designed to enhance your natural beauty and boost your confidence.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 <!-- Service 1 -->
                 <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative overflow-hidden h-48 sm:h-56 lg:h-64">
+                    <div class="relative overflow-hidden h-40 sm:h-48 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dreadlocks" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                        <div class="absolute bottom-0 left-0 p-4 lg:p-6">
-                            <h3 class="text-xl lg:text-2xl font-bold text-white">Dreadlocks</h3>
-                            <p class="text-pink-300 text-sm lg:text-base">Starting from KES 3,500</p>
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 lg:p-6">
+                            <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white">Dreadlocks</h3>
+                            <p class="text-pink-300 text-xs sm:text-sm lg:text-base">Starting from KES 3,500</p>
                         </div>
                     </div>
-                    <div class="p-4 lg:p-6">
-                        <p class="text-gray-600 mb-4 lg:mb-6 text-sm lg:text-base">Professional dreadlock installation, maintenance, and styling by our certified locticians.</p>
-                        <a href="#booking" class="inline-block bg-pink-500 text-white px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-sm lg:text-base">Book Now</a>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <p class="text-gray-600 mb-3 sm:mb-4 lg:mb-6 text-xs sm:text-sm lg:text-base">Professional dreadlock installation, maintenance, and styling by our certified locticians.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-xs sm:text-sm lg:text-base">Book Now</a>
                     </div>
                 </div>
                 
                 <!-- Service 2 -->
                 <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative overflow-hidden h-64">
+                    <div class="relative overflow-hidden h-40 sm:h-48 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1596704017255-eea9abf84c1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Manicure & Pedicure" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                        <div class="absolute bottom-0 left-0 p-6">
-                            <h3 class="text-2xl font-bold text-white">Manicure & Pedicure</h3>
-                            <p class="text-pink-300">Starting from KES 2,500</p>
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 lg:p-6">
+                            <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white">Manicure & Pedicure</h3>
+                            <p class="text-pink-300 text-xs sm:text-sm lg:text-base">Starting from KES 2,500</p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-6">Luxurious nail care treatments including gel polish, nail art, and spa manicures/pedicures.</p>
-                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <p class="text-gray-600 mb-3 sm:mb-4 lg:mb-6 text-xs sm:text-sm lg:text-base">Luxurious nail care treatments including gel polish, nail art, and spa manicures/pedicures.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-xs sm:text-sm lg:text-base">Book Now</a>
                     </div>
                 </div>
                 
                 <!-- Service 3 -->
                 <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative overflow-hidden h-64">
+                    <div class="relative overflow-hidden h-40 sm:h-48 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Hair Washing & Styling" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                        <div class="absolute bottom-0 left-0 p-6">
-                            <h3 class="text-2xl font-bold text-white">Hair Washing & Styling</h3>
-                            <p class="text-pink-300">Starting from KES 1,800</p>
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 lg:p-6">
+                            <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white">Hair Washing & Styling</h3>
+                            <p class="text-pink-300 text-xs sm:text-sm lg:text-base">Starting from KES 1,800</p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-6">Revitalizing hair wash with premium products followed by professional styling of your choice.</p>
-                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <p class="text-gray-600 mb-3 sm:mb-4 lg:mb-6 text-xs sm:text-sm lg:text-base">Revitalizing hair wash with premium products followed by professional styling of your choice.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-xs sm:text-sm lg:text-base">Book Now</a>
                     </div>
                 </div>
                 
                 <!-- Service 4 -->
                 <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative overflow-hidden h-64">
+                    <div class="relative overflow-hidden h-40 sm:h-48 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Facials & Makeup" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                        <div class="absolute bottom-0 left-0 p-6">
-                            <h3 class="text-2xl font-bold text-white">Facials & Makeup</h3>
-                            <p class="text-pink-300">Starting from KES 3,000</p>
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 lg:p-6">
+                            <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white">Facials & Makeup</h3>
+                            <p class="text-pink-300 text-xs sm:text-sm lg:text-base">Starting from KES 3,000</p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-6">Customized facials for all skin types and professional makeup application for any occasion.</p>
-                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <p class="text-gray-600 mb-3 sm:mb-4 lg:mb-6 text-xs sm:text-sm lg:text-base">Customized facials for all skin types and professional makeup application for any occasion.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-xs sm:text-sm lg:text-base">Book Now</a>
                     </div>
                 </div>
                 
                 <!-- Service 5 -->
                 <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative overflow-hidden h-64">
+                    <div class="relative overflow-hidden h-40 sm:h-48 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Massages" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                        <div class="absolute bottom-0 left-0 p-6">
-                            <h3 class="text-2xl font-bold text-white">Massages</h3>
-                            <p class="text-pink-300">Starting from KES 4,500</p>
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 lg:p-6">
+                            <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white">Massages</h3>
+                            <p class="text-pink-300 text-xs sm:text-sm lg:text-base">Starting from KES 4,500</p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-6">Therapeutic massages including Swedish, deep tissue, and aromatherapy to relax and rejuvenate.</p>
-                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <p class="text-gray-600 mb-3 sm:mb-4 lg:mb-6 text-xs sm:text-sm lg:text-base">Therapeutic massages including Swedish, deep tissue, and aromatherapy to relax and rejuvenate.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-xs sm:text-sm lg:text-base">Book Now</a>
                     </div>
                 </div>
                 
                 <!-- Service 6 -->
                 <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative overflow-hidden h-64">
+                    <div class="relative overflow-hidden h-40 sm:h-48 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1556228578-8c1e7055a04e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bridal Packages" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                        <div class="absolute bottom-0 left-0 p-6">
-                            <h3 class="text-2xl font-bold text-white">Bridal Packages</h3>
-                            <p class="text-pink-300">Starting from KES 15,000</p>
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 lg:p-6">
+                            <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white">Bridal Packages</h3>
+                            <p class="text-pink-300 text-xs sm:text-sm lg:text-base">Starting from KES 15,000</p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-6">Complete bridal beauty packages including makeup, hair, nails, and pre-wedding skincare treatments.</p>
-                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <p class="text-gray-600 mb-3 sm:mb-4 lg:mb-6 text-xs sm:text-sm lg:text-base">Complete bridal beauty packages including makeup, hair, nails, and pre-wedding skincare treatments.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-xs sm:text-sm lg:text-base">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -474,72 +507,72 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-16 bg-pink-50">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                <div class="p-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="counter mb-2" data-target="8">0</div>
-                    <p class="text-gray-600 font-medium">Years Experience</p>
+    <section class="py-12 sm:py-16 lg:py-20 bg-pink-50">
+        <div class="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
+            <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8 text-center">
+                <div class="p-3 sm:p-4 lg:p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="counter mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-pink-600" data-target="8">0</div>
+                    <p class="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">Years Experience</p>
                 </div>
-                <div class="p-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="counter mb-2" data-target="2500">0</div>
-                    <p class="text-gray-600 font-medium">Happy Clients</p>
+                <div class="p-3 sm:p-4 lg:p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="counter mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-pink-600" data-target="2500">0</div>
+                    <p class="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">Happy Clients</p>
                 </div>
-                <div class="p-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="counter mb-2" data-target="15">0</div>
-                    <p class="text-gray-600 font-medium">Expert Staff</p>
+                <div class="p-3 sm:p-4 lg:p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="counter mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-pink-600" data-target="15">0</div>
+                    <p class="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">Expert Staff</p>
                 </div>
-                <div class="p-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="counter mb-2" data-target="98">0</div>
-                    <p class="text-gray-600 font-medium">% Satisfaction</p>
+                <div class="p-3 sm:p-4 lg:p-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="counter mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-pink-600" data-target="98">0</div>
+                    <p class="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">% Satisfaction</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Beauty Gallery</h2>
-                <div class="w-20 h-1 bg-pink-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Browse through our collection of stunning transformations and beauty makeovers.</p>
+    <section id="gallery" class="py-12 sm:py-16 lg:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
+            <div class="text-center mb-8 sm:mb-12 lg:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">Our Beauty Gallery</h2>
+                <div class="w-16 sm:w-20 h-1 bg-pink-500 mx-auto mb-4 sm:mb-6"></div>
+                <p class="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto">Browse through our collection of stunning transformations and beauty makeovers.</p>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
                 <!-- Gallery Item 1 -->
                 <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1888&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1888&q=80" alt="Gallery Image" class="w-full h-48 sm:h-56 lg:h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
                 </div>
                 
                 <!-- Gallery Item 2 -->
                 <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1596704017255-eea9abf84c1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1596704017255-eea9abf84c1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-48 sm:h-56 lg:h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
                 </div>
                 
                 <!-- Gallery Item 3 -->
                 <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-48 sm:h-56 lg:h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
                 </div>
                 
                 <!-- Gallery Item 4 -->
                 <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-48 sm:h-56 lg:h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
                 </div>
                 
                 <!-- Gallery Item 5 -->
                 <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1556228578-8c1e7055a04e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1556228578-8c1e7055a04e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-48 sm:h-56 lg:h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
                 </div>
                 
                 <!-- Gallery Item 6 -->
                 <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-48 sm:h-56 lg:h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
                 </div>
             </div>
             
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="gallery.html" class="inline-block border-2 border-pink-500 text-pink-500 px-8 py-3 rounded-full hover:bg-pink-50 transition duration-300">View More</a>
+            <div class="text-center mt-8 sm:mt-10 lg:mt-12" data-aos="fade-up">
+                <a href="gallery.html" class="inline-block border-2 border-pink-500 text-pink-500 px-6 sm:px-8 py-2 sm:py-3 rounded-full hover:bg-pink-50 transition duration-300 text-sm sm:text-base">View More</a>
             </div>
         </div>
     </section>
