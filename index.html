@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRENDZ BEAUTY PARLOUR | Luxury Kenyan Beauty Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f8c8dc;
+            --secondary: #fff9f0;
+            --accent: #d4af37;
+            --dark: #3a3a3a;
+            --light: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--secondary);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(248,200,220,0.9) 0%, rgba(255,255,255,0.8) 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .floating-btn {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        /* Banner animation */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.2;
+            }
+            
+            .service-card {
+                margin-bottom: 1rem;
+            }
+            
+            .gallery-item {
+                margin-bottom: 0.75rem;
+            }
+            
+            .booking-form input,
+            .booking-form select,
+            .booking-form textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .mobile-hidden {
+                display: none !important;
+            }
+            
+            .mobile-full {
+                width: 100% !important;
+            }
+            
+            .mobile-center {
+                text-align: center !important;
+            }
+            
+            .mobile-padding {
+                padding: 1rem !important;
+            }
+            
+            .testimonial-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .team-card {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem !important;
+            }
+            
+            .service-card .p-6 {
+                padding: 1rem !important;
+            }
+            
+            .booking-form {
+                padding: 1.5rem !important;
+            }
+            
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading animation for preloader */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ec4899;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        /* Enhanced form styles */
+        .booking-form input:focus,
+        .booking-form select:focus,
+        .booking-form textarea:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+        
+        /* Gallery enhancements */
+        .gallery-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+    </style>
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .active-nav:after {
+            width: 100%;
+        }
+        
+        .booking-form input, .booking-form select, .booking-form textarea {
+            border-bottom: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
+            border-bottom: 1px solid var(--accent);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .team-card:hover .team-overlay {
+            opacity: 1;
+        }
+        
+        .team-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Discount Banner -->
+    <div class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-pink-600 via-red-500 to-purple-600 text-white py-2 px-4 text-center text-sm md:text-base transform animate-pulse">
+        <div class="flex items-center justify-center space-x-2">
+            <i class="fas fa-fire text-yellow-400"></i>
+            <span class="font-bold">FLASH SALE!</span>
+            <span>Get 30% OFF on Bridal Packages | Use Code: BRIDE30</span>
+            <i class="fas fa-fire text-yellow-400"></i>
+        </div>
+        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300" id="closeBanner">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <a href="https://wa.me/254720314385" target="_blank" class="floating-btn bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all duration-300">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-10 left-0 w-full z-40 bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-sm">
+        <div class="container mx-auto px-4 lg:px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl lg:text-2xl font-bold text-pink-500 flex items-center">
+                        <i class="fas fa-spa mr-2"></i>
+                        <span>TRENDZ</span>
+                        <span class="font-light hidden sm:inline">BEAUTY PARLOUR</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300 active-nav">Home</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300">Services</a>
+                    <a href="gallery.html" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300">Gallery</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300">About</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-pink-500 transition duration-300">Contact</a>
+                    <a href="#booking" class="bg-pink-500 text-white px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 shadow-lg text-sm lg:text-base">Book Now</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="text-gray-700 focus:outline-none" id="mobile-menu-button">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden mt-4" id="mobile-menu">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-700 hover:text-pink-500 transition duration-300">Home</a>
+                    <a href="#services" class="text-gray-700 hover:text-pink-500 transition duration-300">Services</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-pink-500 transition duration-300">Gallery</a>
+                    <a href="#about" class="text-gray-700 hover:text-pink-500 transition duration-300">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-pink-500 transition duration-300">Contact</a>
+                    <a href="#booking" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-center">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-40 pb-20 md:pt-48 md:pb-32 hero-gradient">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">Experience Luxury Beauty Care</h1>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-8">At TRENDZ Beauty Parlour, we transform your beauty dreams into reality with our premium services and expert care.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#booking" class="bg-pink-500 text-white px-6 sm:px-8 py-3 rounded-full hover:bg-pink-600 transition duration-300 shadow-lg text-center font-medium">Book Appointment</a>
+                        <a href="#services" class="border-2 border-pink-500 text-pink-500 px-6 sm:px-8 py-3 rounded-full hover:bg-pink-50 transition duration-300 shadow-lg text-center font-medium">Our Services</a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Beauty Salon" class="rounded-2xl shadow-2xl w-full h-auto">
+                        <div class="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-white p-3 lg:p-4 rounded-xl shadow-lg hidden sm:block">
+                            <div class="flex items-center">
+                                <div class="bg-pink-100 p-2 lg:p-3 rounded-full mr-3 lg:mr-4">
+                                    <i class="fas fa-award text-pink-500 text-lg lg:text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-800 text-sm lg:text-base">Award Winning</p>
+                                    <p class="text-xs lg:text-sm text-gray-600">Beauty Salon 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 lg:py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Premium Services</h2>
+                <div class="w-20 h-1 bg-pink-500 mx-auto mb-6"></div>
+                <p class="text-base lg:text-lg text-gray-600 max-w-2xl mx-auto">Indulge in our luxurious beauty treatments designed to enhance your natural beauty and boost your confidence.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden h-48 sm:h-56 lg:h-64">
+                        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dreadlocks" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4 lg:p-6">
+                            <h3 class="text-xl lg:text-2xl font-bold text-white">Dreadlocks</h3>
+                            <p class="text-pink-300 text-sm lg:text-base">Starting from KES 3,500</p>
+                        </div>
+                    </div>
+                    <div class="p-4 lg:p-6">
+                        <p class="text-gray-600 mb-4 lg:mb-6 text-sm lg:text-base">Professional dreadlock installation, maintenance, and styling by our certified locticians.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-4 lg:px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300 text-sm lg:text-base">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1596704017255-eea9abf84c1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Manicure & Pedicure" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Manicure & Pedicure</h3>
+                            <p class="text-pink-300">Starting from KES 2,500</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">Luxurious nail care treatments including gel polish, nail art, and spa manicures/pedicures.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Hair Washing & Styling" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Hair Washing & Styling</h3>
+                            <p class="text-pink-300">Starting from KES 1,800</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">Revitalizing hair wash with premium products followed by professional styling of your choice.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Facials & Makeup" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Facials & Makeup</h3>
+                            <p class="text-pink-300">Starting from KES 3,000</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">Customized facials for all skin types and professional makeup application for any occasion.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Massages" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Massages</h3>
+                            <p class="text-pink-300">Starting from KES 4,500</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">Therapeutic massages including Swedish, deep tissue, and aromatherapy to relax and rejuvenate.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1556228578-8c1e7055a04e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bridal Packages" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Bridal Packages</h3>
+                            <p class="text-pink-300">Starting from KES 15,000</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">Complete bridal beauty packages including makeup, hair, nails, and pre-wedding skincare treatments.</p>
+                        <a href="#booking" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-pink-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="counter mb-2" data-target="8">0</div>
+                    <p class="text-gray-600 font-medium">Years Experience</p>
+                </div>
+                <div class="p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="counter mb-2" data-target="2500">0</div>
+                    <p class="text-gray-600 font-medium">Happy Clients</p>
+                </div>
+                <div class="p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="counter mb-2" data-target="15">0</div>
+                    <p class="text-gray-600 font-medium">Expert Staff</p>
+                </div>
+                <div class="p-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="counter mb-2" data-target="98">0</div>
+                    <p class="text-gray-600 font-medium">% Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Beauty Gallery</h2>
+                <div class="w-20 h-1 bg-pink-500 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Browse through our collection of stunning transformations and beauty makeovers.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1888&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1596704017255-eea9abf84c1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1556228578-8c1e7055a04e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Gallery Image" class="w-full h-64 object-cover cursor-pointer transition duration-300 hover:scale-105">
+                </div>
+            </div>
+            
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="gallery.html" class="inline-block border-2 border-pink-500 text-pink-500 px-8 py-3 rounded-full hover:bg-pink-50 transition duration-300">View More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-pink-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
+                <div class="w-20 h-1 bg-pink-500 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied clients about their experiences.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sarah K.</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The best salon experience I've ever had! My dreadlocks look amazing and the staff made me feel so comfortable throughout the entire process. Worth every shilling!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Grace M.</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"I got my bridal makeup done here and I couldn't be happier! The makeup lasted all day and looked flawless in all my wedding photos. Highly recommend!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Lilian W.</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The massage therapist worked magic on my tense shoulders. The ambiance is so relaxing and the staff are professional yet friendly. My new go-to beauty spot!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="About Us" class="rounded-2xl shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Beauty Story</h2>
+                    <div class="w-20 h-1 bg-pink-500 mb-6"></div>
+                    <p class="text-lg text-gray-600 mb-6">Founded in 2015, TRENDZ Beauty Parlour began as a small studio with a big dream - to revolutionize beauty care in Kenya with exceptional services and personalized attention.</p>
+                    <p class="text-lg text-gray-600 mb-8">Today, we're proud to be one of Nairobi's premier beauty destinations, known for our skilled professionals, luxurious treatments, and commitment to making every client feel special.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-spa text-pink-500"></i>
+                            </div>
+                            <p class="font-medium text-gray-800">Certified Experts</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-leaf text-pink-500"></i>
+                            </div>
+                            <p class="font-medium text-gray-800">Eco-Friendly</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-medal text-pink-500"></i>
+                            </div>
+                            <p class="font-medium text-gray-800">Award Winning</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-heart text-pink-500"></i>
+                            </div>
+                            <p class="font-medium text-gray-800">Client Focused</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block bg-pink-500 text-white px-8 py-3 rounded-full hover:bg-pink-600 transition duration-300">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-pink-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Meet Our Beauty Experts</h2>
+                <div class="w-20 h-1 bg-pink-500 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Our team of certified professionals is dedicated to helping you look and feel your absolute best.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-80">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a05d5f4ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Member" class="w-full h-full object-cover">
+                        <div class="team-overlay absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Wanjiru M.</h3>
+                                <p class="text-pink-300">Lead Stylist</p>
+                                <div class="flex mt-4 space-x-3">
+                                    <a href="#" class="text-white hover:text-pink-300"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="text-white hover:text-pink-300"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">Specializes in dreadlocks and natural hair care with over 10 years experience.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-80">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a05d5f4ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Member" class="w-full h-full object-cover">
+                        <div class="team-overlay absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Amina K.</h3>
+                                <p class="text-pink-300">Nail Technician</p>
+                                <div class="flex mt-4 space-x-3">
+                                    <a href="#" class="text-white hover:text-pink-300"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="text-white hover:text-pink-300"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">Creates stunning nail art designs and specializes in gel manicures.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative h-80">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a05d5f4ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Member" class="w-full h-full object-cover">
+                        <div class="team-overlay absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Fatuma N.</h3>
+                                <p class="text-pink-300">Makeup Artist</p>
+                                <div class="flex mt-4 space-x-3">
+                                    <a href="#" class="text-white hover:text-pink-300"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="text-white hover:text-pink-300"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">Bridal makeup specialist with a talent for enhancing natural beauty.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative h-80">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a05d5f4ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Member" class="w-full h-full object-cover">
+                        <div class="team-overlay absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Susan W.</h3>
+                                <p class="text-pink-300">Massage Therapist</p>
+                                <div class="flex mt-4 space-x-3">
+                                    <a href="#" class="text-white hover:text-pink-300"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="text-white hover:text-pink-300"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">Certified in multiple massage techniques to relieve stress and tension.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-16 lg:py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-12 lg:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">Book Your Appointment</h2>
+                <div class="w-20 h-1 bg-pink-500 mx-auto mb-6"></div>
+                <p class="text-base lg:text-lg text-gray-600 max-w-2xl mx-auto">Ready to experience luxury beauty care? Schedule your appointment today.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up">
+                <div class="lg:flex">
+                    <div class="lg:w-1/2 bg-pink-500 text-white p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-xl lg:text-2xl font-bold mb-6">Why Choose Us?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm lg:text-base">Certified beauty professionals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm lg:text-base">Premium quality products</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm lg:text-base">Hygienic & sanitized environment</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm lg:text-base">Personalized service</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm lg:text-base">Flexible appointment times</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-2">Contact Info</h4>
+                            <p class="mb-1 text-sm lg:text-base"><i class="fas fa-phone-alt mr-2"></i> 0720 314 385</p>
+                            <p class="mb-1 text-sm lg:text-base"><i class="fas fa-envelope mr-2"></i> info@trendzbeauty.com</p>
+                            <p class="text-sm lg:text-base"><i class="fas fa-map-marker-alt mr-2"></i> Kabuku, Limuru road, Kenya</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2 p-8 lg:p-12 booking-form">
+                        <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-8">Book Now</h3>
+                        <form id="appointmentForm">
+                            <div class="mb-6">
+                                <input type="text" id="name" class="w-full px-4 py-3 bg-transparent border-b border-gray-200 focus:outline-none focus:border-pink-500 transition duration-300" placeholder="Full Name" required>
+                            </div>
+                            <div class="mb-6">
+                                <input type="email" id="email" class="w-full px-4 py-3 bg-transparent border-b border-gray-200 focus:outline-none focus:border-pink-500 transition duration-300" placeholder="Email Address" required>
+                            </div>
+                            <div class="mb-6">
+                                <input type="tel" id="phone" class="w-full px-4 py-3 bg-transparent border-b border-gray-200 focus:outline-none focus:border-pink-500 transition duration-300" placeholder="Phone Number" required>
+                            </div>
+                            <div class="mb-6">
+                                <select id="service" class="w-full px-4 py-3 bg-transparent border-b border-gray-200 focus:outline-none focus:border-pink-500 transition duration-300" required>
+                                    <option value="" disabled selected>Select Service</option>
+                                    <option value="Dreadlocks">Dreadlocks</option>
+                                    <option value="Manicure & Pedicure">Manicure & Pedicure</option>
+                                    <option value="Hair Washing & Styling">Hair Washing & Styling</option>
+                                    <option value="Facials & Makeup">Facials & Makeup</option>
+                                    <option value="Massages">Massages</option>
+                                    <option value="Bridal Packages">Bridal Packages</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <input type="date" id="date" class="w-full px-4 py-3 bg-transparent border-b border-gray-200 focus:outline-none focus:border-pink-500 transition duration-300" required>
+                                </div>
+                                <div>
+                                    <select id="time" class="w-full px-4 py-3 bg-transparent border-b border-gray-200 focus:outline-none focus:border-pink-500 transition duration-300" required>
+                                        <option value="" disabled selected>Select Time</option>
+                                        <option value="09:00 AM">09:00 AM</option>
+                                        <option value="10:00 AM">10:00 AM</option>
+                                        <option value="11:00 AM">11:00 AM</option>
+                                        <option value="12:00 PM">12:00 PM</option>
+                                        <option value="01:00 PM">01:00 PM</option>
+                                        <option value="02:00 PM">02:00 PM</option>
+                                        <option value="03:00 PM">03:00 PM</option>
+                                        <option value="04:00 PM">04:00 PM</option>
+                                        <option value="05:00 PM">05:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-8">
+                                <textarea id="notes" class="w-full px-4 py-3 bg-transparent border-b border-gray-200 focus:outline-none focus:border-pink-500 transition duration-300" placeholder="Additional Notes" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-pink-500 text-white py-3 rounded-full hover:bg-pink-600 transition duration-300 font-medium">Confirm Booking</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-pink-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-pink-500 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">We'd love to hear from you! Reach out with any questions or to schedule your next appointment.</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div data-aos="fade-right">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg h-full">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-map-marker-alt text-pink-500"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-1">Location</h4>
+                                        <p class="text-gray-600">Kabuku <br>Limuru road, Kenya</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-phone-alt text-pink-500"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-1">Phone</h4>
+                                        <p class="text-gray-600">0720 314 385</p>
+                                        <a href="tel:+254720314385" class="text-pink-500 hover:underline mt-1 inline-block">Call Now</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-envelope text-pink-500"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-1">Email</h4>
+                                        <p class="text-gray-600">info@trendzbeauty.com</p>
+                                        <a href="mailto:info@trendzbeauty.com" class="text-pink-500 hover:underline mt-1 inline-block">Email Us</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                        <i class="fab fa-whatsapp text-pink-500"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-1">WhatsApp</h4>
+                                        <p class="text-gray-600">Chat with us instantly</p>
+                                        <a href="https://wa.me/254720314385" target="_blank" class="text-pink-500 hover:underline mt-1 inline-block">Message Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-10">
+                                <h4 class="font-bold text-gray-800 mb-4">Opening Hours</h4>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Monday - Friday</span>
+                                        <span class="font-medium">8:00 AM - 7:00 PM</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Saturday</span>
+                                        <span class="font-medium">9:00 AM - 5:00 PM</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Sunday</span>
+                                        <span class="font-medium">10:00 AM - 3:00 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div data-aos="fade-left">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg h-full">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+                            <form id="contactForm">
+                                <div class="mb-6">
+                                    <input type="text" id="contactName" class="w-full px-4 py-3 border-b border-gray-200 focus:outline-none focus:border-pink-500" placeholder="Your Name" required>
+                                </div>
+                                <div class="mb-6">
+                                    <input type="email" id="contactEmail" class="w-full px-4 py-3 border-b border-gray-200 focus:outline-none focus:border-pink-500" placeholder="Your Email" required>
+                                </div>
+                                <div class="mb-6">
+                                    <input type="tel" id="contactPhone" class="w-full px-4 py-3 border-b border-gray-200 focus:outline-none focus:border-pink-500" placeholder="Your Phone">
+                                </div>
+                                <div class="mb-6">
+                                    <textarea id="contactMessage" class="w-full px-4 py-3 border-b border-gray-200 focus:outline-none focus:border-pink-500" placeholder="Your Message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-pink-500 text-white py-3 rounded-full hover:bg-pink-600 transition duration-300">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 rounded-2xl overflow-hidden shadow-xl" data-aos="fade-up">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.808477395123!2d36.80515831475396!3d-1.2656359990567605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f173c0a1f9f27%3A0x4e1d3c06a434f19a!2sWestlands%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1623841234567!5m2!1sen!2ske" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-pink-500 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Beauty Community</h2>
+                <p class="text-lg mb-8">Subscribe to our newsletter for exclusive offers, beauty tips, and the latest trends.</p>
+                
+                <form class="flex flex-col sm:flex-row max-w-md mx-auto sm:max-w-xl">
+                    <input type="email" placeholder="Your Email Address" class="flex-grow px-6 py-3 rounded-full text-gray-800 focus:outline-none mb-4 sm:mb-0 sm:mr-4">
+                    <button type="submit" class="bg-white text-pink-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300">Subscribe</button>
+                </form>
+                
+                <p class="text-sm mt-4 opacity-80">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <a href="#" class="text-2xl font-bold text-pink-500 flex items-center mb-4">
+                        <i class="fas fa-spa mr-2"></i>
+                        <span>TRENDZ</span>
+                        <span class="font-light">BEAUTY PARLOUR</span>
+                    </a>
+                    <p class="text-gray-400 mb-4">Luxury beauty services in the heart of Nairobi, Kenya.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-pink-500 transition duration-300">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-pink-500 transition duration-300">Services</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-pink-500 transition duration-300">Gallery</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-pink-500 transition duration-300">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-pink-500 transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300">Dreadlocks</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300">Manicure & Pedicure</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300">Hair Styling</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300">Facials & Makeup</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300">Massages</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 mt-1 text-pink-500"></i>
+                            <span>Kabuku, Limuru road, Kenya</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mr-3 mt-1 text-pink-500"></i>
+                            <span>0720 314 385</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mr-3 mt-1 text-pink-500"></i>
+                            <span>info@trendzbeauty.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 TRENDZ Beauty Parlour. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300 text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300 text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300 text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="" class="max-w-full max-h-full">
+        </div>
+        <button class="absolute top-4 right-4 text-white text-3xl" id="closeLightbox">&times;</button>
+    </div>
+
+    <!-- Booking Success Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="bookingModal">
+        <div class="bg-white p-8 rounded-2xl max-w-md w-full text-center">
+            <div class="text-green-500 text-6xl mb-4">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Booking Confirmed!</h3>
+            <p class="text-gray-600 mb-6">Your appointment has been successfully booked. We've sent a confirmation to your email.</p>
+            <button class="bg-pink-500 text-white px-8 py-3 rounded-full hover:bg-pink-600 transition duration-300" id="closeModal">Done</button>
+        </div>
+    </div>
+
+    <!-- Contact Success Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="contactModal">
+        <div class="bg-white p-8 rounded-2xl max-w-md w-full text-center">
+            <div class="text-green-500 text-6xl mb-4">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Message Sent!</h3>
+            <p class="text-gray-600 mb-6">Thank you for contacting us. We'll get back to you as soon as possible.</p>
+            <button class="bg-pink-500 text-white px-8 py-3 rounded-full hover:bg-pink-600 transition duration-300" id="closeContactModal">Done</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 flex flex-col md:flex-row items-center justify-between z-50 hidden" id="cookieConsent">
+        <div class="mb-4 md:mb-0 md:mr-8">
+            <p class="text-sm">We use cookies to ensure you get the best experience on our website. <a href="#" class="text-pink-300 hover:underline">Learn more</a></p>
+        </div>
+        <div class="flex space-x-4">
+            <button class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-300 text-sm" id="cookieDecline">Decline</button>
+            <button class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition duration-300 text-sm" id="cookieAccept">Accept</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // Discount Banner Close
+        const closeBanner = document.getElementById('closeBanner');
+        if (closeBanner) {
+            closeBanner.addEventListener('click', function() {
+                const banner = this.closest('.fixed');
+                banner.style.display = 'none';
+                // Adjust navigation position
+                const nav = document.querySelector('nav');
+                nav.style.top = '0';
+                // Adjust hero section padding
+                const hero = document.querySelector('#home');
+                hero.style.paddingTop = '8rem';
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if(count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+        
+        // Start counter animation when section is in view
+        const statsSection = document.querySelector('.bg-pink-50');
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                animateCounters();
+                observer.unobserve(statsSection);
+            }
+        });
+        
+        observer.observe(statsSection);
+
+        // Gallery lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const closeLightbox = document.getElementById('closeLightbox');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
+            });
+        });
+        
+        closeLightbox.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+        
+        lightbox.addEventListener('click', function(e) {
+            if(e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Booking form submission
+        const bookingForm = document.getElementById('appointmentForm');
+        const bookingModal = document.getElementById('bookingModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to your backend
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                notes: document.getElementById('notes').value
+            };
+            
+            console.log('Booking submitted:', formData); // For demo purposes
+            
+            // Show success modal
+            bookingModal.classList.remove('hidden');
+            bookingForm.reset();
+        });
+        
+        closeModal.addEventListener('click', function() {
+            bookingModal.classList.add('hidden');
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        const contactModal = document.getElementById('contactModal');
+        const closeContactModal = document.getElementById('closeContactModal');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to your backend
+            const formData = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                phone: document.getElementById('contactPhone').value,
+                message: document.getElementById('contactMessage').value
+            };
+            
+            console.log('Contact form submitted:', formData); // For demo purposes
+            
+            // Show success modal
+            contactModal.classList.remove('hidden');
+            contactForm.reset();
+        });
+        
+        closeContactModal.addEventListener('click', function() {
+            contactModal.classList.add('hidden');
+        });
+
+        // Cookie consent
+        const cookieConsent = document.getElementById('cookieConsent');
+        const cookieAccept = document.getElementById('cookieAccept');
+        const cookieDecline = document.getElementById('cookieDecline');
+        
+        // Check if cookie consent was already given
+        if(!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                cookieConsent.classList.remove('hidden');
+            }, 2000);
+        }
+        
+        cookieAccept.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieConsent.classList.add('hidden');
+        });
+        
+        cookieDecline.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieConsent.classList.add('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Active nav link highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+
+        // WhatsApp floating button animation
+        const whatsappBtn = document.querySelector('.floating-btn');
+        setInterval(() => {
+            whatsappBtn.classList.toggle('animate-pulse');
+        }, 3000);
+    </script>
+
+</body>
+</html>
